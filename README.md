@@ -10,7 +10,7 @@ Requires:
 To be implemented:
 - Websocket or webhooks instead of continuous polling.
 - Webserver in AP mode for hosting configuration page.
-- 	SSID and WPA-PSK input
--   Bitcoin public address input
--   Blockchain API provider
--   Payment threshold, GPIO action and time. (e.g. 1000 bits sets GPIO2 for 10 seconds)
+  - SSID and WPA-PSK input
+  - Bitcoin public address input
+  - Blockchain API provider
+  - Payment threshold, GPIO action and time. (e.g. 1000 bits sets GPIO2 for 10 seconds)
