@@ -3,7 +3,7 @@
 #include <Adafruit_NeoPixel.h>
 #include <Ticker.h>
 
-#define PIN            2
+#define PIN            2   //Neopixel or compatible LEDs connected to GPIO2
 #define NUMPIXELS      5
 
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
@@ -12,6 +12,7 @@ Ticker flipper;
 const char* ssid     = "<SSID>";
 const char* password = "<WIFI_PASSWORD>";
 const char* host = "api.blockcypher.com";
+const uint32_t amount = 500;          //amount in bits(uBTC) needed to trigger payment indicator
 String address;
 uint32_t rateLimit = 0, balance = 0, balanceLocal = 0;
 uint8_t i = 0, count = 0, state = 0, balInit = 0;
@@ -23,8 +24,6 @@ void setup() {
 
   Serial.begin(115200);
   delay(10);
-
-  // We start by connecting to a WiFi network
 
   Serial.println();
   Serial.print("Connecting to ");
@@ -96,7 +95,8 @@ void loop() {
       Serial.print(balance);
       Serial.println(" bits");
       Serial.println("");
-      if (balInit && balance > balanceLocal) {
+      
+      if (balInit && (balance >= (balanceLocal + amount))) {
         strip.setBrightness(255);
         flipper.attach_ms(50, flip, 0x00FF00);
         uint32_t payment = balance - balanceLocal;
@@ -106,8 +106,9 @@ void loop() {
         delay(10000);
         balanceLocal = balance;
       }
-      balanceLocal = balance;
-      balInit = 1;
+      
+      balanceLocal = balance;   //prevents payment condition from being evaluated as true
+      balInit = 1;              //during first iteration of loop()
       Serial.println("");
     }
     client.flush();
