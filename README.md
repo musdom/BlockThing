@@ -8,6 +8,7 @@ Requires:
 - Adafruit NeoPixel Library: https://github.com/adafruit/Adafruit_NeoPixel
 
 To be implemented:
+- SSL!
 - I2C/SPI SSD1306 OLED display plugin.
 - Websocket or webhooks instead of continuous polling.
 - Webserver in AP mode for hosting configuration page.
