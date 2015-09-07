@@ -10,6 +10,7 @@ Requires:
 To be implemented:
 - SSL!
 - I2C/SPI SSD1306 OLED display plugin.
+- Using a JSON parser that can work with the chip.
 - Websocket or webhooks instead of continuous polling.
 - Webserver in AP mode for hosting configuration page.
   - SSID and WPA-PSK input
