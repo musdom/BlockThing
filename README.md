@@ -1,4 +1,4 @@
-# ESP8266_Bitcoin
+# BlockThing - ESP8266
 
 Have your ESP8266 monitor the balance in a Bitcoin address using a 3rd party blockchain API, and make something happen (e.g. light a WS2811 LED strip) when a payment is received. Applications: beverage vending, parking meters, bus stop heaters etc.
 
